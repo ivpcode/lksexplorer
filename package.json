@@ -1,0 +1,23 @@
+{
+  "name": "lksexplorer",
+  "version": "1.0.0",
+  "description": "Repo of the LKSCOIN chain explorer",
+  "main": "index.html",
+  "scripts": {
+    "dev": "parcel index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ivpcode/lksexplorer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ivpcode/lksexplorer/issues"
+  },
+  "homepage": "https://github.com/ivpcode/lksexplorer#readme",
+  "dependencies": {
+    "lit": "^2.0.0-rc.2",
+    "uikit": "^3.6.22"
+  }
+}
