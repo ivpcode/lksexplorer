@@ -4,7 +4,8 @@
   "description": "Repo of the LKSCOIN chain explorer",
   "main": "index.html",
   "scripts": {
-    "dev": "parcel index.html"
+    "dev": "parcel index.html",
+    "dev49": "parcel ./re49/index.html"
   },
   "repository": {
     "type": "git",

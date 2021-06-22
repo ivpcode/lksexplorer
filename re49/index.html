@@ -1,0 +1,73 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Sciento HTML Template</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Google+Sans:400,500,700|Google+Sans+Text:400">
+    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans+Text:400&amp;text=%E2%86%90%E2%86%92%E2%86%91%E2%86%93">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900|Lora:400,400i,700" rel="stylesheet">
+
+    <link type="text/css" rel="stylesheet" href="./main.scss">
+    <script src="./qrcode.js"></script>
+</head>
+<body>
+    
+    <header>
+        <img src="./logo.svg" >
+        <span>Certificate of Authenticity</span>
+    </header>
+
+    <div class="container">
+        <div class="model">
+            <div>
+                <figure class="c-screen-about__image">
+                    <span></span>
+                    <img src="https://via.placeholder.com/1024x758.png" alt="">
+                </figure>
+            </div>
+            <div>
+                <h1>SAIL RE49</h1>
+                <h3>Nascono dalla raccolta e ricerca di vele usate</h3>                
+                <div class="desc">
+                    Le SAIL RE49 nascono dalla raccolta e ricerca di vele usate. Sono di fatto il fiore all’occhiello della nostra produzione per ricerca e sviluppo. 
+                    Caratteristiche: 
+                    <ul>
+                        <li>Le versioni delle SAIL RE49 sono tutte esclusive e numerate </li>
+                        <li>Ogni paio di SAIL RE49 è certificato con numero su blockchain numerato nella sua versione</li>
+                        <li>I dettagli specifici possono rendere ogni scarpa leggermente diversa dalle altre</li>
+                        <li>Ogni scarpa è fatta a mano</li>
+                        <li>Ogni scarpa ha la spugna interna</li>
+                        <li>La suola sempre in pneumatico riciclato </li>
+                    </ul>
+                </div>
+                       
+                <div class="auth">
+                    <h4>Certificazione autenticità:</h4>
+                    <div>Prodotto il: 20-06-2021 alle 10:02:33</div>
+                    <div>
+                        Riferimento Blockchain:
+
+                        <a> 
+                            <span id="qrcode"></span>
+                            <span>b6047ba16ff27a3f201be3b2d03b8762cbc5812ea9dfc7a651e7e72d6f0d2d4d</span>
+                        </a>
+                        <script type="text/javascript">
+                            new QRCode(document.getElementById("qrcode"), 
+                            {
+                                text: "https://www.lkschain.info/tx/b6047ba16ff27a3f201be3b2d03b8762cbc5812ea9dfc7a651e7e72d6f0d2d4d",
+                                width: 200,
+                                height: 200,
+                                colorDark : "#000000",
+                                colorLight : "#ffffff",
+                                correctLevel : QRCode.CorrectLevel.H
+                            })
+                        </script>
+                    </div>
+                </div>
+              </div>
+        </div>
+    </div>
+</body>
+</html>
