@@ -143,7 +143,7 @@ body {
 }
 
 header {
-    height: 110px;
+    height: 200px;
     text-align: center;
     display: flex;
     flex-direction: row;
@@ -235,7 +235,15 @@ div.model {
         }
 
         > div.desc {
-            margin-bottom: 10px;
+            margin-bottom: 25px;
+            font-family: "Lora", sans-serif;  
+            font-style: italic;          
+            color: #333333;
+        }
+
+
+        > div.characteristics {
+            margin-bottom: 25px;
 
             ul {
                 list-style-position: outside;
@@ -248,7 +256,8 @@ div.model {
         }
 
         div.auth {
-            
+            margin-bottom: 25px;
+
             h4 {
                 font-family: "Lora", sans-serif;
                 margin-bottom: 5px;
@@ -303,6 +312,7 @@ div.phases {
             margin-left: 0px;
             width: auto;
         }
+
         ul {
             list-style: none;
             overflow: hidden;
@@ -336,9 +346,12 @@ div.phases {
                         margin-left: -1px;
                     }
                 }
-                h4 {
-                    font-size: 14px;
+                p {
+                    font-size: 18px;
                     margin-bottom: 5px;
+                    @media (max-width: 375px) {
+                        font-size: 16px;
+                    }                    
                 }
 
                 figure {
