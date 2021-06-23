@@ -59,7 +59,7 @@
     line-height: inherit; }
   
   a {
-    color: #132a46;
+    color: #2066a1;
     text-decoration: none;
     transition: all 0.3s; }
     a:hover, a:focus {
@@ -105,7 +105,7 @@
         font-size: 70px; } }
   
   h2 {
-    color: #132a46;
+    color: #575756;
     line-height: 1.25;
     font-size: 30px; }
     @media (min-width: 320px) {
@@ -135,6 +135,13 @@ img {
     max-width: 100%;
 }
 
+body {
+    background-image: url(./heading-base.png);
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: contain;    
+}
+
 header {
     height: 110px;
     text-align: center;
@@ -162,10 +169,12 @@ div.container {
     width: 100%;
     padding-left: 15px;
     padding-right: 15px;
+    margin-bottom: 50px;
 
     @media (min-width: 600px) {
         margin: 0 auto;
         max-width: 1440px;
+        margin-bottom: 100px;
     }    
 }
 
@@ -222,7 +231,7 @@ div.model {
             line-height: 1.66666;
             color: rgb(80, 80, 80);
             font-weight: 400;
-            line-height: 30px;
+            line-height: 20px;
         }
 
         > div.desc {
@@ -260,6 +269,102 @@ div.model {
                     }
                 }
             }        
+        }
+    }
+}
+
+div.phases {
+    div.heading {
+        display: flex;
+        flex-direction: row;        
+        margin-bottom: 25px;
+
+        h2 {
+            padding: 15px;
+            line-height: 30px;
+            align-self: flex-end;
+        }
+
+        svg {
+            rect {
+                fill: none;
+                stroke: #132a46;
+            }
+
+            fill: #2066a1;
+            stroke: none;
+        }
+    }
+
+    div.timeline {
+        width: 70%;
+        margin-left: 50px;
+        @media (max-width: 375px) {
+            margin-left: 0px;
+            width: auto;
+        }
+        ul {
+            list-style: none;
+            overflow: hidden;
+
+            li {
+                position: relative;
+                padding-left: 30px;
+                padding-bottom: 40px;
+                display: flex;
+                flex-direction: column;
+
+                em {
+                    display:inline;
+                    position: absolute;
+                    width: 14px;
+                    height: 14px;
+                    border-radius: 50%;
+                    background: #2066a1;
+                    top: 5px;
+                    left: 0px;
+
+                    &:before {
+                        content: "";
+                        position: absolute;
+                        display: block;
+                        width: 2px;
+                        background: #2066a1;
+                        height: 9999px;
+                        top: 0;
+                        left: 50%;
+                        margin-left: -1px;
+                    }
+                }
+                h4 {
+                    font-size: 14px;
+                    margin-bottom: 5px;
+                }
+
+                figure {
+                    display: inline-block;
+                    width: 250px;
+                    position: relative;
+                    margin: 5px;
+                    border: 1px solid #CCC;
+        
+                    span {
+                        display: block;
+                        margin-top: 100%;
+                        
+                    }
+        
+                    img {
+                        position: absolute;
+                        top: 0;
+                        bottom: 0;
+                        right: 0;
+                        left: 0;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+            }
         }
     }
 }
