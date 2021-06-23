@@ -5,7 +5,8 @@
   "main": "index.html",
   "scripts": {
     "dev": "parcel index.html",
-    "dev49": "parcel ./re49/index.html"
+    "dev49": "parcel ./re49/index.html",
+    "release49": "parcel build ./re49/index.html"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,8 @@
     "uikit": "^3.6.22"
   },
   "devDependencies": {
+    "cssnano": "^5.0.6",
+    "postcss": "^8.2.15",
     "sass": "^1.35.1"
   },
   "browserslist": [
