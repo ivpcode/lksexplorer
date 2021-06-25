@@ -50,8 +50,7 @@ if (process.argv.length > 4)
             }
             catch (Ex){
                 console.log(Ex)        
-            }
-            
+            }            
         });
 
         let ipfs = ipfsClient.create()
