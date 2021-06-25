@@ -18,10 +18,8 @@ let serial = process.argv[2]
 let model = process.argv[3]
 
 let producer = "MASOLINI_EREDI"
-
 if (process.argv.length > 4)
     producer = process.argv[4];
-
 
 (async ()=>{
     try {
