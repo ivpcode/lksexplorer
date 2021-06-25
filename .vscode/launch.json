@@ -12,7 +12,7 @@
                 "<node_internals>/**"
             ],
             "program": "${workspaceFolder}/re49/serve.js",
-            "args": ["serial12345", "SAIL_RE49", "MASOLINI_EREDI"]
+            "args": ["XXXXXXX", "MARE", "MASOLINI_EREDI"]
         }
     ]
 }
