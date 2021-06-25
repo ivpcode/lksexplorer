@@ -2,34 +2,43 @@ const Path = require('path')
 const LiquidJS = require('liquidjs')
 const fs = require('fs')
 const express = require('express')
-const utils = require('./lib/utils')
-
-let Models = require("./data/models")
-let Materials = require("./data/materials")
-let Producers = require("./data/producers")
+const Utils = require('./lib/utils')
 
 let serial = process.argv[2]
 let model = process.argv[3]
 let producer = process.argv[4]
 
-let RenderData = { Model: Models[model] }
-let mat = []
-RenderData.Model.Materials.forEach(element => {
-    mat.push(Materials[element])
+const DataDir = Path.join(__dirname,"data")
+const TemplateDir = Path.join(__dirname,"template/dist")
+
+let RenderData = Utils.ProcessDataModels(model, producer, serial, DataDir, TemplateDir)
+
+fs.watchFile(Path.join(DataDir,"models.js"), (curr, prev) => {
+    try {
+        RenderData = Utils.ProcessDataModels(model, producer, serial, __dirname)
+    }
+    catch(Ex) {
+        console.log("Error while loading template data file: "+Ex);
+    }    
 });
-RenderData.Model.Materials = mat
 
-RenderData.Product = {
-    ProductionTimestamp: utils.FormatDate(new Date()),
-    SerialNumber: serial
-}
-RenderData.Producer = Producers[producer]
-RenderData.Ln = "it"
+fs.watchFile(Path.join(DataDir,"materials.js"), (curr, prev) => {
+    try {
+        RenderData = Utils.ProcessDataModels(model, producer, serial, __dirname)
+    }
+    catch(Ex) {
+        console.log("Error while loading template data file: "+Ex);
+    }    
+});
 
-let images = utils.ParseData(RenderData,"Image")
-images.forEach((img)=>{
-    fs.copyFileSync(Path.join(__dirname,"./data/"+img),Path.join(__dirname,"./template/dist/"+img))
-})
+fs.watchFile(Path.join(DataDir,"producers.js"), (curr, prev) => {
+    try {
+        RenderData = Utils.ProcessDataModels(model, producer, serial, __dirname)
+    }
+    catch(Ex) {
+        console.log("Error while loading template data file: "+Ex);
+    }    
+});
 
 let app = express();
 let entries = [ "/", "index.html" ]

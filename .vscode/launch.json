@@ -7,12 +7,23 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
+            "name": "Launch Serve",
             "skipFiles": [
                 "<node_internals>/**"
             ],
             "program": "${workspaceFolder}/re49/serve.js",
             "args": ["XXXXXXX", "MARE", "MASOLINI_EREDI"]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Notarize",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}/re49/notarize.js",
+            "args": ["XXXXXXX", "MARE", "MASOLINI_EREDI"]
         }
+
     ]
 }

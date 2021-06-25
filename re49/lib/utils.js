@@ -1,6 +1,8 @@
- 
+const fs = require('fs')
+const Path = require('path')
 
-const utils = {
+
+const Utils = {
     FormatDate: function(date, FormatString) {
         if (FormatString == null)
             FormatString = 'YYYY-MM-DD HH:mm:ss';
@@ -28,12 +30,43 @@ const utils = {
                 return;
             }
             if (object[k] && typeof object[k] === 'object') {
-                value = utils.ParseData(object[k], key, outArray);
+                value = Utils.ParseData(object[k], key, outArray);
             }
         });
 
         return outArray;
-    }    
+    },
+    
+    ProcessDataModels: function(model, producer, serial, data_dir, destination_dir) {
+        let Models = require(Path.join(data_dir,"/models"))
+        let Materials = require(Path.join(data_dir,"/materials"))
+        let Producers = require(Path.join(data_dir,"/producers"))
+
+        let RenderData = { Model: Models[model] }
+        let mat = []
+        RenderData.Model.Materials.forEach(element => {
+            mat.push(Materials[element])
+        });
+        RenderData.Model.Materials = mat
+        
+        RenderData.Product = {
+            ProductionTimestamp: Utils.FormatDate(new Date()),
+            SerialNumber: serial
+        }
+        RenderData.Producer = Producers[producer]
+        RenderData.Ln = "it"
+        
+        let images = Utils.ParseData(RenderData,"Image")
+        images.forEach((img)=>{
+            fs.copyFileSync(Path.join(data_dir,img),Path.join(destination_dir,img))
+        }) 
+        
+        delete require.cache[require.resolve(Path.join(data_dir,"/models"))];
+        delete require.cache[require.resolve(Path.join(data_dir,"/materials"))];
+        delete require.cache[require.resolve(Path.join(data_dir,"/producers"))];
+
+        return RenderData
+    }
 }
 
-module.exports = utils
+module.exports = Utils
