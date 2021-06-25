@@ -8,7 +8,7 @@ const materials = {
         Image: "jeans_1.jpg"
     },
     OMBRELLONI: {                
-        Description: "Tessuti degli ombrelloni, sdrai e lettini dismessi a fine stagione, dagli uffici balneari italiani.",
+        Description: "Tessuti degli ombrelloni, sdrai e lettini dismessi a fine stagione dagli uffici balneari italiani.",
         Image: "mare_1.jpg"
     }            
 }
