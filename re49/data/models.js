@@ -81,7 +81,7 @@ const models = {
     
     MARE: {
         Name: "MARE Re49",
-        Slogan: "Porta ai tuoi piedi il sole delle spiagge italiane",
+        Slogan: "Porta ai tuoi piedi il sole delle calde spiagge italiane",
         Description: "Le MARE RE49 sono le nostre iconiche shoes, create dai nostri artigiani dando nuova vita ai tessuti di sdrai, ombrelloni e lettini delle calde spiagge italiane. I tessuti sono ricavati da ombrelloni, sdrai e lettini dismessi a fine stagione dagli stabilimenti balneari italiani.",
         Image: "mare.jpg",
         Characteristics: [
