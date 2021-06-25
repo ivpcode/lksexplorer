@@ -1,9 +1,13 @@
 <html lang="{{ Ln }}">
 <head>
     <meta charset="utf-8">
-    <title>{{ Model.Name }} - Blockchain Certificate of Authenticity</title>
-    <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{{ Model.Name }} - Blockchain Certificate of Authenticity</title>
+    <meta name="description" content="{{ Model.Description }}">
+    <meta property="og:title" content="{{ Model.Name }}">
+    <meta property="og:description" content="{{ Model.Slogan }}">
+    <meta property="og:image" content="url://{{ Model.Image }}">
 
     <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Google+Sans:400,500,700|Google+Sans+Text:400">
     <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans+Text:400&amp;text=%E2%86%90%E2%86%92%E2%86%91%E2%86%93">
@@ -11,6 +15,7 @@
 
     <link type="text/css" rel="stylesheet" href="./main.scss">
     <script src="./main.js"></script>
+
 </head>
 <body>
     <img class="bkg" src="./heading-base.png">
@@ -120,6 +125,8 @@
                 {% endfor %}                 
             </div>                      
         </div>                        
-    </div>        
+    </div>  
+    
+    
 </body>
 </html>

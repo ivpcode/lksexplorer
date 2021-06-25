@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "parcel index.html",
     "dev49": "rm -rf ./re49/template/dist; parcel ./re49/template/index.html --port 1233 --out-dir ./re49/template/dist",
-    "release49": "parcel build ./re49/index.html"
+    "release49": "rm -rf ./re49/template/dist; parcel build  ./re49/template/index.html --out-dir ./re49/template/dist"
   },
   "repository": {
     "type": "git",
@@ -28,7 +28,7 @@
     "yarn": "^1.22.10"
   },
   "devDependencies": {
-    "cssnano": "^5.0.6",
+    "cssnano": "^4.1.11",
     "express": "^4.17.1",
     "fs-extra": "^10.0.0",
     "liquidjs": "^9.25.1",
