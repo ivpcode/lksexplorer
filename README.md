@@ -12,3 +12,5 @@ Repo of the LKSCOIN chain explorer
         * [ ] Esegue una apposita chiamata di dichiarazione dominio-to-address che permette al server di fare la verifica della firma e del record TXT e salvare nel db interno l'associazione. 
         * [ ] Se l'operazione va a buon fine il server archiva l'associazione pubaddr con il dominio e lo ritorna nelle query di insight
     * [ ] sistemare la api insight, clonando le librerie del dash e sostituendo i valori con quelli del lks
+    * [ ] sul chain explorer mettere un sistema che cattura il sottodominio e se trova corrispondenza nel db dei nomi-addr ne mostra le transazioni
+
