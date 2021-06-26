@@ -13,4 +13,7 @@ Repo of the LKSCOIN chain explorer
         * [ ] Se l'operazione va a buon fine il server archiva l'associazione pubaddr con il dominio e lo ritorna nelle query di insight
     * [ ] sistemare la api insight, clonando le librerie del dash e sostituendo i valori con quelli del lks
     * [ ] sul chain explorer mettere un sistema che cattura il sottodominio e se trova corrispondenza nel db dei nomi-addr ne mostra le transazioni
+* [ ] Sistema di notarizzazione: 
+   * [ ] forkare https://github.com/dashevo/dashcore-lib e trasformarla in lkscore-lib
+   * [ ] Fare firma con api del dash o tramite costruzione della transazione ed utilizzare il insight-api per inviarla in rete
 
