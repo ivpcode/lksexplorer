@@ -5,8 +5,7 @@
   "main": "index.html",
   "scripts": {
     "dev": "parcel index.html",
-    "dev49": "rm -rf ./re49/template/dist; parcel ./re49/template/index.html --port 1233 --out-dir ./re49/template/dist",
-    "release49": "rm -rf ./re49/template/dist; parcel build  ./re49/template/index.html --out-dir ./re49/template/dist"
+    "release": "export DEPLOY_DATE=\"$(date '+%Y.%m.%d-%H.%M')\"; rm -rf ./releases/$DEPLOY_DATE & parcel build  index.html --out-dir ./releases/$DEPLOY_DATE"
   },
   "repository": {
     "type": "git",
@@ -22,7 +21,7 @@
     "lit": "^2.0.0-rc.2",
     "regenerator-runtime": "^0.13.7",
     "socket.io-client": "^4.1.2",
-    "uikit": "^3.6.22",
+    "uikit": "^3.6.22"
   },
   "devDependencies": {
     "cssnano": "^4.1.11",
