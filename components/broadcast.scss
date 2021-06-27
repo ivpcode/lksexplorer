@@ -1,0 +1,20 @@
+lit-home {
+    display: block;
+
+    .table-load-more {
+        text-align: center;
+
+        button {
+            margin: 0 auto;
+            position:relative;
+            top:-35px;
+            z-index:2;
+            background: white;
+
+            &:hover, &:active, &:focus {
+                background: white;
+            }
+        }
+    }
+    
+}

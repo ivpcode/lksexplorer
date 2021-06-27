@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "Repo of the LKSCOIN chain explorer",
   "main": "index.html",
+  "files_to_build": "index.html broadcast.html",
   "scripts": {
-    "dev": "parcel index.html",
-    "release": "export DEPLOY_DATE=\"$(date '+%Y.%m.%d-%H.%M')\"; rm -rf ./releases/$DEPLOY_DATE & parcel build  index.html --out-dir ./releases/$DEPLOY_DATE"
+    "dev": "parcel $npm_package_files_to_build",
+    "release": "export DEPLOY_DATE=\"$(date '+%Y.%m.%d-%H.%M')\"; rm -rf ./releases/$DEPLOY_DATE & parcel build $npm_package_files_to_build --out-dir ./releases/$DEPLOY_DATE"
   },
   "repository": {
     "type": "git",

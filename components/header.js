@@ -29,8 +29,8 @@ export default class Header extends LitBase {
                             <img src="https://www.lkschain.io/images/logo.png" style="height:48px">
                         </a>   
                         <ul class="uk-navbar-nav uk-visible@m">
-                            <li><a href="/">Blocks</a></li>
-                            <li class="uk-active"><a href="./">Status</a></li>
+                            <li><a href="/" class="blocks">Blocks</a></li>
+                            <li><a href="/" class="status">Status</a></li>
                         </ul> 
                     </div>
                     <div class="uk-navbar-right">
@@ -48,6 +48,12 @@ export default class Header extends LitBase {
             </div>
         </div>        
         `
+    }
+
+    firstRendered() {
+        let el = this.querySelector(this.active_link)
+        if (el != null)
+            el.classList.add("uk-active")
     }
 }
 
