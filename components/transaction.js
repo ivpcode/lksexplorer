@@ -83,8 +83,8 @@ export default class Transaction extends LitBase {
                 if (this.txid == null)
                     throw "missing txid parameter"
 
-                let res = await InsightClient.GetTransaction(this.txid)
-                this.tx = res.data
+                this.tx = await InsightClient.GetTransaction(this.txid)
+
             }
             catch (Ex) {
                 this.is_error = true
@@ -95,7 +95,7 @@ export default class Transaction extends LitBase {
 
     _RenderSummary(Tx) {
         return html`
-        <div>
+        <div class="summary">
             <h2>Transaction Summary</h2>
             <p>
                 This transaction was first broadcast to the LKSCoin network on ${Tx.Timestamp}.  
@@ -221,20 +221,7 @@ export default class Transaction extends LitBase {
         Tx.TypeNum = this.tx.type
         if (this.tx.type == null)
             Tx.TypeNum = 0
-        Tx.Type = "Send Transaction"
-        if (this.tx.type == 1)
-            Tx.Type = "Provider Registration Transaction (ProRegTx)"
-        if (this.tx.type == 2)
-            Tx.Type = "Provider Update Service Transaction (ProUpServTx)"
-        if (this.tx.type == 3)
-            Tx.Type = "Provider Update Registrar Transaction (ProUpRegTx)"
-        if (this.tx.type == 4)
-            Tx.Type = "Provider Update Revocation Transaction (ProUpRevTx)"
-        if (this.tx.type == 5)
-            Tx.Type = "Coinbase Transaction (CbTx)"
-        if (this.tx.type == 6)
-            Tx.Type = "Quorum Commitment"
-
+        Tx.Type = InsightClient.FormatTransactionType(Tx.TypeNum)
 
         Tx.Size = parseInt(this.tx.size) + " bytes"
         if (this.tx.size > 1024)

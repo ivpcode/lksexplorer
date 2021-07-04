@@ -1,0 +1,13 @@
+lit-block-list {
+    display: block;
+
+    table {
+        td {
+            text-align: center;
+
+            @media (max-width: 512px) {
+               font-size: 12px;
+            }
+        }
+    }
+}
