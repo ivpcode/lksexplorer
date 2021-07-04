@@ -54,15 +54,15 @@ var utxo = {
 let vutxo = [
   {
     "address": "XgFDQYHoQW3Uoy33qayZg1nQ63s1KydMfK",
-    "txid": "b714a92e779d99fb2d8a2343f3aa0ee4e6c4b6c167c4637a13c5cb602899da13",
+    "txid": "37bc12cd2b2ffdf1dc783dcf3b99ea6aa724fc6ccc880992ecfd71d529e2e435",
     "outputIndex": 1,
     "scriptPubKey": "76a9143cf7f2dd59b9c18115b7d5dc720a3beb1d6348de88ac",
-    "satoshis": 99930000,
+    "satoshis": 99910000,
 
   },  
 ]
 
-let payload = "id=SAIL_RE49:CAMPIONATURA,ipfs=QmecBHxyg4csYQ9db2LZc1J6Z8UHKeLAttNKMJb57QW65n"
+let payload = "id=MARE:CAMPIONATURA,ipfs=QmTCUM7Wg863nczZo9Q3Tu6Ki6EN27EiZi5ga5zjFiE2Rr"
 
 
 console.log(payload.length)
@@ -71,9 +71,127 @@ var transaction = new Transaction()
   .fee(10000)
   .from(vutxo)
   .addData(payload)
-  .to("XgFDQYHoQW3Uoy33qayZg1nQ63s1KydMfK",99930000-10000)
+  .to("XgFDQYHoQW3Uoy33qayZg1nQ63s1KydMfK",99910000-10000)
   .change("XgFDQYHoQW3Uoy33qayZg1nQ63s1KydMfK")
   .sign(imported);
+
+//console.log(transaction.toString())
+
+vutxo = [
+  {
+    "address": "XoNxeY7xBQZH4G26swcgtXsexPKUgEeFpq",
+    "txid": "041e327ce319aa5946a0f61a7f8ed5847e7d68a1c4e3d2f1e49ee9c0cf86bdd6",
+    "vout": 2,
+    "scriptPubKey": "76a9148b37d6428574102364d76f1b2625f671d68b078188ac",
+    "amount": 105368.48224976,
+    "satoshis": 10536848224976,
+    "confirmations": 0,
+    "ts": 1624975390
+  },
+  {
+    "address": "XoNxeY7xBQZH4G26swcgtXsexPKUgEeFpq",
+    "txid": "041e327ce319aa5946a0f61a7f8ed5847e7d68a1c4e3d2f1e49ee9c0cf86bdd6",
+    "vout": 1,
+    "scriptPubKey": "76a9148b37d6428574102364d76f1b2625f671d68b078188ac",
+    "amount": 105368.48224976,
+    "satoshis": 10536848224976,
+    "confirmations": 0,
+    "ts": 1624975390
+  },
+  {
+    "address": "XoNxeY7xBQZH4G26swcgtXsexPKUgEeFpq",
+    "txid": "54bcd243355031e26ea5f6fd72f5943dc585da55819b1aabb02949a97a6a14d3",
+    "vout": 0,
+    "scriptPubKey": "76a9148b37d6428574102364d76f1b2625f671d68b078188ac",
+    "amount": 0.9999,
+    "satoshis": 99990000,
+    "confirmations": 0,
+    "ts": 1624975390
+  },
+  {
+    "address": "XoNxeY7xBQZH4G26swcgtXsexPKUgEeFpq",
+    "txid": "797739238e29e9ed3f77bad9c64757e67e9cce07dccb2f0f7b9e3193de22330e",
+    "vout": 2,
+    "scriptPubKey": "76a9148b37d6428574102364d76f1b2625f671d68b078188ac",
+    "amount": 277945.27037192,
+    "satoshis": 27794527037192,
+    "confirmations": 0,
+    "ts": 1624975390
+  },
+  {
+    "address": "XoNxeY7xBQZH4G26swcgtXsexPKUgEeFpq",
+    "txid": "797739238e29e9ed3f77bad9c64757e67e9cce07dccb2f0f7b9e3193de22330e",
+    "vout": 1,
+    "scriptPubKey": "76a9148b37d6428574102364d76f1b2625f671d68b078188ac",
+    "amount": 277945.27037192,
+    "satoshis": 27794527037192,
+    "confirmations": 0,
+    "ts": 1624975390
+  },
+  {
+    "address": "XoNxeY7xBQZH4G26swcgtXsexPKUgEeFpq",
+    "txid": "7724cc04ed7805b36f885c2415229f295de768daf5e74deb673a944548c004b4",
+    "vout": 0,
+    "scriptPubKey": "76a9148b37d6428574102364d76f1b2625f671d68b078188ac",
+    "amount": 0.9999,
+    "satoshis": 99990000,
+    "confirmations": 0,
+    "ts": 1624975390
+  },
+  {
+    "address": "XoNxeY7xBQZH4G26swcgtXsexPKUgEeFpq",
+    "txid": "81b4ff0405a11f04a0d3ff4e68f6e236b3ff7bafa02013eac3b0dd8c68a03929",
+    "vout": 0,
+    "scriptPubKey": "76a9148b37d6428574102364d76f1b2625f671d68b078188ac",
+    "amount": 0.9999,
+    "satoshis": 99990000,
+    "confirmations": 0,
+    "ts": 1624975390
+  },
+  {
+    "address": "XoNxeY7xBQZH4G26swcgtXsexPKUgEeFpq",
+    "txid": "6a12c9ac99817661f9344c203ac7f34c5f70d49220de1bbfae260bbdf8a1d9fb",
+    "vout": 0,
+    "scriptPubKey": "76a9148b37d6428574102364d76f1b2625f671d68b078188ac",
+    "amount": 0.9999,
+    "satoshis": 99990000,
+    "confirmations": 0,
+    "ts": 1624975390
+  },
+  {
+    "address": "XoNxeY7xBQZH4G26swcgtXsexPKUgEeFpq",
+    "txid": "ddd561178cdc0e17ecf785fe3045ce17d534f6f158dcf31fe88b7c976edf840b",
+    "vout": 1,
+    "scriptPubKey": "76a9148b37d6428574102364d76f1b2625f671d68b078188ac",
+    "amount": 277945.27037192,
+    "satoshis": 27794527037192,
+    "confirmations": 0,
+    "ts": 1624975365
+  },
+  {
+    "address": "XoNxeY7xBQZH4G26swcgtXsexPKUgEeFpq",
+    "txid": "ddd561178cdc0e17ecf785fe3045ce17d534f6f158dcf31fe88b7c976edf840b",
+    "vout": 2,
+    "scriptPubKey": "76a9148b37d6428574102364d76f1b2625f671d68b078188ac",
+    "amount": 277945.27037192,
+    "satoshis": 27794527037192,
+    "confirmations": 0,
+    "ts": 1624975365
+  },
+]
+
+let tot = 0;
+vutxo.forEach((utxo)=>{
+  utxo.outputIndex = utxo.vout
+  tot += utxo.satoshis
+})
+
+transaction = new Transaction()
+  .fee(10000)
+  .from(vutxo)
+  .to("XkxExcPbvfLitnPibqGpVt5sryYRRcn6sq",tot-10000)
+  .change("XoNxeY7xBQZH4G26swcgtXsexPKUgEeFpq")
+  .sign(PrivateKey.fromWIF("XJWAL938xWQ8RzGmY7JPGFbmKF4Te7ZX1WbfhGKrnCfTEpUK5cMM"));
 
 console.log(transaction.toString())
 

@@ -1,0 +1,52 @@
+lit-og-badge {
+    display: block;
+    position:relative;
+    border: 1px solid #e1e8ed;
+    border-radius: 4px;
+    margin: 10px;
+    box-sizing: content-box;
+    overflow: hidden;
+    max-width: 750px;
+
+    a {
+        &,
+        &:active,
+        &:visited,
+        &:focus,
+        &:hover {
+            text-decoration: none;
+            color: #353f52;
+
+        }    
+
+        &:hover > div {
+            text-decoration: underline;
+        }    
+
+        h3 {
+            padding: 15px 20px;
+            margin: 0;       
+        }
+
+        p {
+            padding: 0 20px;
+            padding-bottom: 20px;
+            margin: 0; 
+        }
+
+        img {
+            display:block;
+        }
+
+        > div {
+            position: relative;
+            padding: 15px;
+            bottom:0;
+            width: 100%;
+            color: white;
+            background-color: #0f4b88;
+
+           
+        }
+    }
+}

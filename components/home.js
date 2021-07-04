@@ -1,6 +1,6 @@
 import {html} from 'lit';
-import LitBase from '/lib/lit-base'
-//import { io } from "socket.io-client";
+import LitBase from '../lib/lit-base'
+import io from '../lib/socket.io'
 import "./home.scss"
 
 export default class Home extends LitBase {
@@ -20,7 +20,7 @@ export default class Home extends LitBase {
 
         this.transactions = []
 
-        this.socket = window.io("https://insight1.lkschain.info");
+        this.socket = io("https://insight1.lkschain.info");
         this.socket.on('connect', () => {
             // Join the room.
             this.socket.emit('subscribe', 'inv');
