@@ -120,7 +120,7 @@ export default class Address extends LitBase {
 
         return html`
         <div class="summary-container">
-            <div></div>
+            <div class="hide-under-768"></div>
             <div>
                 <h2>Address</h2>
                 <div class="address"><a href="#" uk-tooltip="Click to copy" @click="${this._CopyAddress}"><span class="address-data">${Address.Addr}</span> <span uk-icon="copy"></span></a></div>

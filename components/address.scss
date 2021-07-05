@@ -12,12 +12,12 @@ lit-address {
             background-repeat: no-repeat;
             background-size: cover;
             background-color: #DFDFDF;
-            border: 1px solid #CCC;
+
         }
 
-        > div:last-child {
-            padding: 0 20px;
-
+        > div:last-child {           
+            margin-top: 20px;
+            
             h2 {
                 margin-bottom: 10px;
             }

@@ -89,6 +89,12 @@ div.summary p {
     }
 }
 
+@media (max-width: 768px) {
+    .hide-under-768 {
+        display: none;
+    }
+}
+
 .json-data-container {
     max-width: 100%;
     overflow-x: scroll;
