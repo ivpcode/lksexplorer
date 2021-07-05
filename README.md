@@ -3,6 +3,7 @@ Repo of the LKSCOIN chain explorer
 
 # To do list
 
+* Prendere spunto da: https://www.blockchain.com/explorer/ e da https://insight.dash.org/insight/
 * [ ] Chain explorer:
    * [ ] schermata home:
       * [ ] descrizione dell'about
@@ -13,12 +14,12 @@ Repo of the LKSCOIN chain explorer
       * [ ] modulo di scan qrcode
       * [ ] powered by..
       * [ ] footer mettere veersione e varie
-   * [ ] completare le schermate di Transaction (https://insight.dash.org/insight/tx/a19c659b150ac55d2a2a137b126fcf9cf0a6c62fea7df2a6e4d3eaeda6139b54):
-      * [ ] blocco transazione
-      * [ ] blocco summary
-      * [ ] blocco dettagli con indirizzi e show more se più di N
-      * [ ] blocco di render ipfs se messaggio con dati ipfs       
-   * [ ] completare la schermata di Block
+   * [x] completare le schermate di Transaction (https://insight.dash.org/insight/tx/a19c659b150ac55d2a2a137b126fcf9cf0a6c62fea7df2a6e4d3eaeda6139b54):
+      * [x] blocco transazione
+      * [x] blocco summary
+      * [x] blocco dettagli con indirizzi e show more se più di N
+      * [x] blocco di render ipfs se messaggio con dati ipfs       
+   * [x] completare la schermata di Block
    * [ ] gestire il naming (tramite record TXT in DNS??)
         * [ ] il titolare dell'indirizzo pubblico crea un messaggio che contiene il dominio (completo di sottodominio), lo firma di modo che sia possibile verificare la firma. 
         * [ ] Pone l'hash della firma in un record TXT del dominio. 
@@ -30,3 +31,8 @@ Repo of the LKSCOIN chain explorer
    * [ ] forkare https://github.com/dashevo/dashcore-lib e trasformarla in lkscore-lib
    * [ ] Fare firma con api del dash o tramite costruzione della transazione ed utilizzare il insight-api per inviarla in rete
 
+# Link utili
+
+* https://lit.dev/docs/api/LitElement/#LitElement/updates
+* https://gist.github.com/jackzampolin/da3201b89d23dd5fa3becb0185da1fb2
+* https://www.blockchain.com/btc/block/111000
