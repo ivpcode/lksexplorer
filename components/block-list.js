@@ -15,8 +15,6 @@ export default class BlockList extends LitBase {
 
     static get properties() {
         return {
-            blk: {type: Object},
-            is_error: {type: Number}
         }
     }
 
@@ -32,21 +30,19 @@ export default class BlockList extends LitBase {
     
         return html`
         <div class="content-wrapper uk-container">
-            <div class="content-wrapper uk-container">
-                <h2>Blocks</h2>
-                <table class="uk-table uk-table-middle uk-table-divider blocks-container">
-                    <thead>
-                        <tr>
-                            <td>Height</td>
-                            <td class="hide-on-small">Hash</td>
-                            <td>Timestamp</td>
-                            <td>Transactions</td>
-                            <td class="hide-on-small">Size</td>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>                                
-                </table>
-            </div>              
+            <h2>Blocks</h2>
+            <table class="uk-table uk-table-middle uk-table-divider blocks-container">
+                <thead>
+                    <tr>
+                        <td>Height</td>
+                        <td class="hide-on-small">Hash</td>
+                        <td>Timestamp</td>
+                        <td>Transactions</td>
+                        <td class="hide-on-small">Size</td>
+                    </tr>
+                </thead>
+                <tbody></tbody>                                
+            </table>
         </div>    
         `
     }
@@ -99,29 +95,6 @@ export default class BlockList extends LitBase {
         }
     }
 
-    _FormatBlock(){
-        let Block = {}
-
-        Block.Hash = this.blk.hash
-
-        Block.Size = parseInt(this.blk.size) + " bytes"
-        if (this.blk.size > 1024)
-        Block.Size = `${(this.blk.size/1024).toFixed(1)}Kb`
-
-        let date = new Date(this.blk.time*1000)
-        Block.Timestamp = date.toDateString() + " " + date.toTimeString()        
-
-        Block.Confirmations = this.blk.confirmations
-        Block.TransactionCount = this.blk.tx.length
-        Block.Height = this.blk.height
-
-        Block.MerkleRoot = this.blk.merkleroot
-        Block.Nonce = this.blk.nonce 
-        Block.Difficulty = this.blk.difficulty
-        Block.Reward = this.blk.reward
-        
-        return Block
-    }
 }
 
 BlockList.RegisterElement()
