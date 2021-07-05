@@ -123,7 +123,7 @@ export default class Address extends LitBase {
             <div></div>
             <div>
                 <h2>Address</h2>
-                <div class="address"><a href="#" title="Click to copy" @click="${this._CopyAddress}"><span class="address-data">${Address.Addr}</span> <span uk-icon="copy"></span></a></div>
+                <div class="address"><a href="#" uk-tooltip="Click to copy" @click="${this._CopyAddress}"><span class="address-data">${Address.Addr}</span> <span uk-icon="copy"></span></a></div>
                 <div class="balance"><label>Balance:</label><span>${Address.Balance}</span></div>
                 <div class="total-received"><label>Total Received:</label><span>${Address.TotalReceived}</span></div>
             </div>
