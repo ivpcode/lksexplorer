@@ -15,6 +15,7 @@ export default class BlockList extends LitBase {
 
     static get properties() {
         return {
+            loading: {type: Number}
         }
     }
 
@@ -24,6 +25,7 @@ export default class BlockList extends LitBase {
         this.vblks = null
         this.block_date = null
         this.start_timestamp = null
+        this.loading = true
     }
 
     render() {
@@ -43,6 +45,12 @@ export default class BlockList extends LitBase {
                 </thead>
                 <tbody></tbody>                                
             </table>
+            <div class="load-container">
+                ${this.loading==true?
+                    html`<div uk-spinner="ratio: 1" class="load-spinner"></div>`:
+                    html`<button class="load-more uk-button uk-button-default" @click="${this._RenderBlocks}">Load More</button>`
+                }                            
+            </div>
         </div>    
         `
     }
@@ -63,6 +71,8 @@ export default class BlockList extends LitBase {
 
     async _RenderBlocks() {
         try {
+            this.loading = true
+
             let res = await InsightClient.GetBlockList(this.block_date,this.start_timestamp)
             let blcnt = this.querySelector(".blocks-container tbody")
             this.block_date = res.pagination.prev
@@ -87,12 +97,11 @@ export default class BlockList extends LitBase {
                 `
                 blcnt.append(row)
             })
-            
-
         }
         catch (Ex) {
            
         }
+        this.loading = false
     }
 
 }

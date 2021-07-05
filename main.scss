@@ -8,8 +8,13 @@ body{
     font-family: 'Nunito Sans', sans-serif;
     color: rgb(53, 63, 82);
 }
+
 footer{
     margin-top: auto;
+}
+
+.hidden {
+    display: none !important;
 }
 
 .uk-input {
@@ -22,6 +27,12 @@ footer{
     @media (max-width: 768px) {
         padding: 40px 10px;
     }
+}
+
+.spinner-container {
+    width: 100%;
+    margin: 20px 0;
+    text-align: center;
 }
 
 div.summary p {
@@ -76,4 +87,13 @@ div.summary p {
     .hide-on-small {
         display: none;
     }
+}
+
+.json-data-container {
+    max-width: 100%;
+    overflow-x: scroll;
+    padding: 10px;
+    background: #27a4f505;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
 }

@@ -1,0 +1,46 @@
+lit-address {
+    display: block;
+
+    .summary-container {
+        display:flex;
+        flex-direction: row;
+        font-size: 18px;
+        
+        > div:first-child {
+            height: 200px;
+            width: 200px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-color: #DFDFDF;
+            border: 1px solid #CCC;
+        }
+
+        > div:last-child {
+            padding: 0 20px;
+
+            h2 {
+                margin-bottom: 10px;
+            }
+
+            .address { 
+                margin-bottom: 20px;
+
+                a,a:active, a:hover, a:visited {
+                    color: #353f52;
+                    text-decoration: none;
+                }
+            }
+
+            label {
+                color: #828282;
+                margin-right: 10px;
+            }
+        }
+    }
+
+    .load-container {
+        width: 100%;
+        text-align: center;
+        margin-top: 20px;
+    }
+}

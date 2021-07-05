@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Repo of the LKSCOIN chain explorer",
   "main": "index.html",
-  "files_to_build": "index.html broadcast.html transaction.html block.html blocks.html",
+  "files_to_build": "index.html broadcast.html transaction.html block.html blocks.html address.html",
   "scripts": {
     "dev": "parcel $npm_package_files_to_build",
     "release": "export DEPLOY_DATE=\"$(date '+%Y.%m.%d-%H.%M')\"; rm -rf ./releases/$DEPLOY_DATE & parcel build $npm_package_files_to_build --out-dir ./releases/$DEPLOY_DATE"
@@ -24,6 +24,7 @@
     "json-formatter-js": "^2.3.4",
     "lit": "^2.0.0-rc.2",
     "page-metadata-parser": "^1.1.4",
+    "qrcode": "^1.4.4",
     "regenerator-runtime": "^0.13.7",
     "socket.io-client": "^4.1.2",
     "uikit": "^3.6.22"
