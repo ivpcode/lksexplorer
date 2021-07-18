@@ -22,9 +22,10 @@ export default class Search extends LitBase {
     render() {
         return html`        
             
-            <form class="uk-search">
+            <form class="uk-search" @submit="${this._OnSearch}">
                 <span uk-search-icon></span>
-                <input class="uk-input uk-search-input uk-form-width-large	" type="search" placeholder="Search block, transaction or address">
+                <input class="uk-input uk-form-width-large	" type="search" placeholder="Search block, transaction or address">
+                <input type="submit" style="position: absolute; left: -9999px"/>
             </form>
             <div class="scan-button hidden">
                 <svg style="width:24px;height:24px" viewBox="0 0 24 24">
@@ -35,7 +36,33 @@ export default class Search extends LitBase {
         `
     }
 
-    firstRendered() {
+    _OnSearch(evt) {
+        evt.preventDefault()
+        try {
+            let txt = this.querySelector(".uk-input").value.trim();
+            if (txt == null || txt.trim() == "")
+                return;
+
+            if (txt.startsWith("X")) {
+                document.location.href = "/address.html?addr="+txt
+                return
+            }
+
+            if (/^\d+$/.test(txt)) {
+                document.location.href = "/block.html?index="+txt
+                return
+            }
+
+            if (txt.startsWith("00000000")) {
+                document.location.href = "/block.html?hash="+txt
+                return
+            }
+            
+            document.location.href = "/transaction.html?txid="+txt
+        }
+        catch {
+
+        }
     }
 }
 

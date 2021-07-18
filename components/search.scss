@@ -4,6 +4,12 @@ lit-search {
     align-items: center;
     justify-content: center;
 
+    *::placeholder 
+    {
+        color: #333333F0  !important;
+        opacity: 1;
+    }    
+
     form.uk-search {
         width: 500px;
 
@@ -11,7 +17,8 @@ lit-search {
             padding: 0 5px
         }
         input {
-            text-indent: 24px;
+            text-indent: 20px;
+            
         }
     }
 
