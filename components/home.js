@@ -38,6 +38,9 @@ export default class Home extends LitBase {
     render() {
         return html`
         <div class="content-wrapper uk-container">
+            <div class="show-on-small">
+                <lit-search></lit-search>
+            </div>        
             <div class="uk-grid-divider" uk-grid>
                 <div class="uk-width-1-3@m">
                     ${this._RenderAbout()}
@@ -100,10 +103,7 @@ export default class Home extends LitBase {
     }
 
     _RenderAbout(){
-        return html`
-        <div class="show-on-small">
-            <lit-search></lit-search>
-        </div>
+        return html`        
         <div class="col-xs-12 col-md-4 col-gray">
             <h2>Welcome</h2>
             <p><b>lkschain.info</b> is an opensource <a href="https://www.lkschain.io/" target="_blank">LKSCoin</a> blockchain explorer, with the aim of making it easier to consult the LKSCoin blockchain and above all <b>making the notarized information integrated in LKSCoin transacions visually accessible</b>.</p>

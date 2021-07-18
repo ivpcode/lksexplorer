@@ -17,7 +17,7 @@ footer{
     display: none !important;
 }
 
-.uk-input {
+.uk-input, .uk-search-input {
     border-radius: 5px;
 }
 
@@ -100,7 +100,7 @@ div.summary p {
     display: none;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 960px) {
     .hide-on-small {
         display: none;
     }

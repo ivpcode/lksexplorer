@@ -3,7 +3,18 @@ lit-search {
     flex-direction: row; 
     align-items: center;
     justify-content: center;
-    
+
+    form.uk-search {
+        width: 500px;
+
+        .uk-icon {
+            padding: 0 5px
+        }
+        input {
+            text-indent: 24px;
+        }
+    }
+
     .scan-button {
         display: flex;
         flex-direction: column;
