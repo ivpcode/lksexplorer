@@ -1,10 +1,55 @@
 lit-home {
     display: block;
 
+    .content-wrapper {
+        
+        @media (min-width: 768px) {
+            padding-top: 60px;
+        }
+    }
+
+    lit-search {
+        margin-bottom: 30px;
+    }
+
+    .powered-by {
+        text-align: center;
+
+        .logos {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 ;
+
+            @media (max-width: 1024px) {
+                margin: 0 20%;
+            }
+        
+            @media (max-width: 512px) {
+                margin: 0;
+            }
+
+            a {
+                display:block;
+                width: 25%;
+
+                img {                
+                    width: 100%;
+                    max-height: 80px;
+                }
+            }
+        }
+    }
+
+    h2 span {
+        font-size: 18px;
+    }
+
     .table-load-more {
         text-align: center;
 
-        button {
+        button, a {
             margin: 0 auto;
             position:relative;
             top:-35px;
@@ -19,6 +64,9 @@ lit-home {
     
 
     .uk-table {
+        
+        width: 100%;
+        
         th {
             text-transform: none;
             font-weight: 400;
@@ -32,6 +80,17 @@ lit-home {
             border-top: 1px solid #e5e5e5;
             border-bottom: 1px solid #e5e5e5;
         }    
+    }
+
+    .realtime-transacions-wait {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-items: center;
+
+        > div {
+            margin: 5px;
+        }
     }
 }
 

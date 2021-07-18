@@ -36,6 +36,8 @@ export default class Transaction extends LitBase {
             if (this.txid != null && this.txid != "") {
                 return html`
                 <div class="content-wrapper uk-container">
+                    ${this._RenderBreadcrumb()}         
+
                     <div>
                         <h2>Not Found</h2>
                         <p>
@@ -47,6 +49,7 @@ export default class Transaction extends LitBase {
             } else {
                 return html`
                 <div class="content-wrapper uk-container">
+                    ${this._RenderBreadcrumb()}                       
                     <div>
                         <h2>Missing txid parameter</h2>
                         <p>
@@ -61,10 +64,11 @@ export default class Transaction extends LitBase {
         if (this.tx == null)
             return html``
 
-        let Tx = this._FormatTx()
+        let Tx = InsightClient.FormatTransaction(this.tx)
 
         return html`
         <div class="content-wrapper uk-container">
+            ${this._RenderBreadcrumb()}        
             ${this._RenderSummary(Tx)}
             ${this._RenderDetails(Tx)}
             ${this._RenderJSON()}
@@ -91,6 +95,15 @@ export default class Transaction extends LitBase {
             }
         },10)
 
+    }
+
+    _RenderBreadcrumb() {
+        return html`
+            <ul class="uk-breadcrumb">
+                <li><a href="/index.html">Home</a></li>
+                <li><span>Transaction</span></li>
+            </ul>
+        `                 
     }
 
     _RenderSummary(Tx) {
@@ -176,7 +189,7 @@ export default class Transaction extends LitBase {
                                     <div>${el.label}</div>
                                     <div id="${el.id}">
                                         ${el.amount!=null?html`${el.amount.toFixed(6)}&nbsp;`:``}
-                                        <a href="${el.url}" target="_blank">${el.value}</a>
+                                        <a href="${el.url}">${el.value}</a>
                                     </div>
                                 </div>`
                         else
@@ -213,122 +226,6 @@ export default class Transaction extends LitBase {
         `
     }
 
-    _FormatTx(){
-        let Tx = {}
-
-        Tx.Hash = this.tx.txid
-
-        Tx.TypeNum = this.tx.type
-        if (this.tx.type == null)
-            Tx.TypeNum = 0
-        Tx.Type = InsightClient.FormatTransactionType(Tx.TypeNum)
-
-        Tx.Size = parseInt(this.tx.size) + " bytes"
-        if (this.tx.size > 1024)
-        Tx.Size = `${(this.tx.size/1024).toFixed(1)}Kb`
-
-        let date = new Date(this.tx.time*1000)
-        Tx.Timestamp = date.toDateString() + " " + date.toTimeString()        
-
-        Tx.Status = (this.tx.confirmations>0)?"Confirmed":"Unconfirmed"
-
-        Tx.Amount = 0
-        Tx.Fees = 0
-        if (this.tx.isCoinBase!=true)
-        Tx.Fees = this.tx.fees
-
-        Tx.Block = this.tx.blockheight
-
-        Tx.Confirmations = this.tx.confirmations
-
-        Tx.TotalInput = this.tx.valueIn
-        Tx.TotalOutput = this.tx.valueOut
-
-        Tx.SenderAddr = "From mining"
-        Tx.TotalSent = 0
-        let vSenderAddrs = []
-        if (this.tx.vin!=null || this.tx.vin.length>0) {
-           
-            this.tx.vin.forEach(element => {
-                if (vSenderAddrs.indexOf(element.addr)<0 && element.addr!=null)
-                    vSenderAddrs.push(element.addr)
-                    Tx.TotalSent += parseFloat(element.value)
-            });
-            if (vSenderAddrs.length==1)
-                Tx.SenderAddr = vSenderAddrs[0]
-            else if (vSenderAddrs.length>1)
-                Tx.SenderAddr = vSenderAddrs.join(", ")
-        }
-
-        Tx.ReceiverAddr = ""        
-        Tx.NotarizedData = ""
-        Tx.TotalReceived = 0
-        Tx.vReceiverAddrs = []
-        if (this.tx.vout!=null || this.tx.vout.length>0) {
-            this.tx.vout.forEach(element => {
-                if (element.scriptPubKey!=null && 
-                    element.scriptPubKey.addresses!=null) {
-                        element.scriptPubKey.addresses.forEach((addr)=>{
-                            if (Tx.vReceiverAddrs.indexOf(addr)<0 && vSenderAddrs.indexOf(addr)<0)
-                                Tx.vReceiverAddrs.push(addr)   
-                            if (vSenderAddrs.indexOf(addr)<0)
-                                Tx.Amount += parseFloat(element.value)
-                        })
-                    } 
-
-                if (element.scriptPubKey!=null && 
-                    element.scriptPubKey.asm!=null && 
-                    element.scriptPubKey.asm.startsWith("OP_RETURN")){
-                        Tx.NotarizedData = this.HexToAscii(element.scriptPubKey.asm.replace("OP_RETURN ",""))
-                    }                    
-            });
-            if (Tx.vReceiverAddrs.length==0)                
-                Tx.ReceiverAddr = Tx.SenderAddr
-            else if (Tx.vReceiverAddrs.length==1)
-                Tx.ReceiverAddr = Tx.vReceiverAddrs[0]                
-            else
-                Tx.ReceiverAddr = Tx.vReceiverAddrs.join(", ")
-           
-        }
-
-        Tx.IPFSHash = ""
-        if (Tx.NotarizedData != "") {
-            let obj = this._ParseNotarizedData(Tx.NotarizedData)            
-            if (typeof(obj) === 'object') {
-                if (obj["ipfs"] != null)
-                    Tx.IPFSHash = obj["ipfs"]
-            }
-        }
-        if (Tx.IPFSHash != "") 
-            Tx.IPFSUrl = `https://ipfs.io/ipfs/${Tx.IPFSHash}`
-
-        return Tx
-    }
-
-    _ParseNotarizedData(nd) {
-        if (nd.startsWith("id=")) {
-            let vf = nd.split(",")
-            let Obj = {}
-            vf.forEach((el)=>{
-                if (el.startsWith("id="))
-                    Obj["id"] = el.replace("id=","")
-                else if (el.startsWith("ipfs=")) 
-                    Obj["ipfs"] = el.replace("ipfs=","")
-            })
-
-            return Obj
-        }
-        return nd;
-    }
-
-    HexToAscii(str) {
-        let hexString = str;
-        let strOut = '';
-            for (let x = 0; x < hexString.length; x += 2) {
-                strOut += String.fromCharCode(parseInt(hexString.substr(x, 2), 16));
-            }
-        return strOut;    
-    }
 }
 
 Transaction.RegisterElement()

@@ -1,7 +1,16 @@
 import {html} from 'lit';
 import LitBase from '../lib/lit-base'
+import InsightClient from '../lib/insight-client'
+import Utilities from '../lib/utilities'
 import io from '../lib/socket.io'
+
+import Search from './search'
+
 import "./home.scss"
+
+import BitcoreLogo from "../img/bitcore.logo.svg"
+import LitLogo from "../img/lit.logo.svg"
+import YarnLogo from "../img/yarn.logo.png"
 
 export default class Home extends LitBase {
 
@@ -11,7 +20,8 @@ export default class Home extends LitBase {
 
     static get properties() {
         return {
-            transactions: {type: Array}
+            transactions: {type: Array},
+            loading_blocks: {type: Number}
         }
     }
 
@@ -20,22 +30,9 @@ export default class Home extends LitBase {
 
         this.transactions = []
 
-        this.socket = io("https://insight1.lkschain.info");
-        this.socket.on('connect', () => {
-            // Join the room.
-            this.socket.emit('subscribe', 'inv');
-        })
-        this.socket.on( 'tx', (data)=> {
-            if (data.txlock) {
-                console.log("New InstantSend transaction received: " + data.txid)
-            } else {
-                console.log("New transaction received")
-                console.log(data)
-            }
-            this.transactions.unshift(data)
-            this.update()
-        })
+ 
 
+        this.loading_blocks=true
     }
 
     render() {
@@ -55,61 +52,101 @@ export default class Home extends LitBase {
         `
     }
 
+    firstUpdated() {
+
+        // Attiva il caricamento dei blocchi
+        setTimeout(async ()=>{
+            let res = await InsightClient.GetBlockList()
+            let blcnt = this.querySelector("table.blocks-container tbody")
+            for(let i=0;i<5;i++) {
+                let tr = res.blocks [i];
+                let Height = tr.height                
+                let Timestamp = Utilities.FormatTimestamp(new Date(tr.time*1000))   
+                let Transactions = tr.txlength
+                let Size = tr.size + " bytes"
+                if (tr.size > 1024)
+                    Size = (tr.size/1024).toFixed(1) + " Kb"
+
+                let row = document.createElement("tr")                
+                row.innerHTML = `                
+                        <td><a href="/block.html?index=${Height}" target="_blank">${Height}</a></td>
+                        <td>${Timestamp}</td>
+                        <td class="hide-on-small">${Transactions}</td>
+                        <td class="hide-on-small">${Size}</td>
+                `
+                blcnt.append(row)
+            }
+            this.loading_blocks=false
+        },5)
+
+        // Attiva il caricamento delle transazioni
+        setTimeout(async ()=>{
+            this.socket = io("https://insight1.lkschain.info");
+            this.socket.on('connect', () => {
+                // Join the room.
+                this.socket.emit('subscribe', 'inv');
+            })            
+            this.socket.on( 'tx', (data)=> {
+                if (data.txlock) {
+                    console.log("New InstantSend transaction received: " + data.txid)
+                } else {
+                    console.log("New transaction received")
+                    console.log(data)
+                }
+                this.transactions.unshift(data)
+                this.update()
+            })
+        },5)
+    }
+
     _RenderAbout(){
         return html`
-        <div class="col-xs-12 col-md-4 col-gray">
-        <h2 translate="">About</h2>
-        <p translate=""><strong class="ng-scope">insight</strong>  is an <a href="https://insight.is/" target="_blank" class="ng-scope">open-source Dash blockchain explorer</a> with complete REST and websocket APIs that can be used for writing web wallets and other apps  that need more advanced blockchain queries than provided by dashd RPC.  Check out the <a href="https://github.com/dashpay/insight-ui-dash" target="_blank" class="ng-scope">source code</a>.</p>
-        <p translate=""><strong class="ng-scope">insight</strong> is still in development, so be sure to report any bugs and provide feedback for improvement at our <a href="https://github.com/dashpay/insight-ui-dash/issues" target="_blank" class="ng-scope">github issue tracker</a>.</p>
-        <div id="powered" class="row">
-          <div class="powered-text">
-            <small class="text-muted" translate="">Powered by</small>
-          </div>
-          <a href="http://bitcore.io" target="_blank" class="bitcore" title="Bitcore"></a>
-          <a href="http://angularjs.org" target="_blank" class="angularjs" title="AngularJS"></a>
-          <a href="https://code.google.com/p/leveldb/" target="_blank" class="leveldb" title="LevelDB"></a>
-          <a href="http://nodejs.org" target="_blank" class="nodejs" title="NodeJs"></a>
+        <div class="show-on-small">
+            <lit-search></lit-search>
         </div>
-      </div>
+        <div class="col-xs-12 col-md-4 col-gray">
+            <h2>Welcome</h2>
+            <p><b>lkschain.info</b> is an opensource <a href="https://www.lkschain.io/" target="_blank">LKSCoin</a> blockchain explorer, with the aim of making it easier to consult the LKSCoin blockchain and above all <b>making the notarized information integrated in LKSCoin transacions visually accessible</b>.</p>
+            <p><b>lkschain.info</b> is still under development, we will be happy if you report any bugs or malfunctions to out <a href="https://github.com/ivpcode/lksexplorer/issues" target="_blank">github issue tracker</a>.</p>
+            <div class="row powered-by">
+                <div class="powered-text">
+                    <small class="text-muted" translate="">Powered by</small>
+                </div>
+                <div class="logos">
+                    <a href="http://bitcore.io" target="_blank" class="bitcore" title="Bitcore"><img src="${BitcoreLogo}"/></a>
+                    <a href="https://lit.dev/" target="_blank" class="angularjs" title="Lit Elements Web Components"><img src="${LitLogo}"/></a>
+                    <a href="https://yarnpkg.com/" target="_blank" class="nodejs" title="Yarn Package Manager"><img src="${YarnLogo}"/></a>
+                </div>
+            </div>
+        </div>
         `
     }
 
     _RenderBlocksTable() {
+
         return html`
         <h2 class="">Latest Blocks</h2>
-        <table class="uk-table uk-table-hover uk-table-divider">
+        <table class="uk-table uk-table-hover uk-table-divider blocks-container">
             <thead>
                 <tr>
                     <th>Height</th>
                     <th>Age</th>
-                    <th>Transactions</th>
-                    <th>Size</th>
+                    <th class="hide-on-small" width="15%">Transactions</th>
+                    <th class="hide-on-small" width="15%">Size</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td><a>123545</a></td>
-                    <td>26 minutes ago</td>
-                    <td>43</td>
-                    <td>15kb</td>
-                </tr>
-                <tr>
-                    <td><a>123545</a></td>
-                    <td>26 minutes ago</td>
-                    <td>43</td>
-                    <td>15kb</td>
-                </tr>
-                <tr>
-                    <td><a>123545</a></td>
-                    <td>26 minutes ago</td>
-                    <td>43</td>
-                    <td>15kb</td>
-                </tr>
+               
             </tbody>
         </table>
         <div class="table-load-more">
-            <hr>    
-            <button class="uk-button uk-button-default uk-button-small">See all blocks</button>
+            <div class="load-container">
+                ${this.loading_blocks==true?
+                    html`<div uk-spinner="ratio: 1" class="load-spinner"></div>`:
+                    html`<hr><a class="uk-button uk-button-default uk-button-small" href="/blocks.html">See all blocks</a>`
+                }                            
+            </div>
+            
         </div>    
         `
     }
@@ -117,25 +154,31 @@ export default class Home extends LitBase {
     _RenderTransactionsTable() {
 
         return html`
-        <h2 class="">Latest Transactions</h2>
-        <table class="uk-table uk-table-hover uk-table-divider">
+        <h2 class="">Realtime Network Transactions</h2>
+        <table class="uk-table uk-table-hover uk-table-divider" style="table-layout:fixed">
             <thead>
                 <tr>
                     <th>Hash</th>
                     <th>Value Out</th>
                 </tr>
             </thead>
-            <tbody>
-                ${this.transactions.map((tr)=>{
+            <tbody>               
+                ${this.transactions.map((tr)=>{                    
                     return html`
                     <tr>
-                        <td><a>${tr.txid}</a></td>
-                        <td>${tr.valueOut} LKSCOIN</td>
+                        <td class="uk-text-truncate"><a href="/transaction.html?txid=${tr.txid}">${tr.txid}</a></td>
+                        <td>${tr.valueOut.toFixed(2)} LKSCOIN</td>
                     </tr>
                     `
-                })}                               
+                })}                             
             </tbody>
-        </table>         
+        </table>   
+        ${this.transactions.length == 0?
+            html`<div class="realtime-transacions-wait">
+                    <div uk-spinner="ratio: 1" class="load-spinner"></div>
+                    <div>Waiting for transactions to spread on network</div>
+                </div>`:""
+        }      
         `
     }    
 }

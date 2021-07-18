@@ -16,7 +16,11 @@ lit-address {
         }
 
         > div:last-child {           
-            margin-top: 20px;
+           
+            @media (min-width: 768px) {
+                margin-top: 20px;
+            }
+
             
             h2 {
                 margin-bottom: 10px;
@@ -24,6 +28,7 @@ lit-address {
 
             .address { 
                 margin-bottom: 20px;
+                word-break: break-all;
 
                 a,a:active, a:hover, a:visited {
                     color: #353f52;

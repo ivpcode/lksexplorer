@@ -19,20 +19,21 @@ lit-header {
     }
 
     .uk-navbar-right{ 
-        > div{
-            display:flex;
-            flex-direction: row; 
-            align-items: center;
 
-            .scan-button {
-                cursor: pointer;
-                border: 1px solid rgba(255,255,255,0.0);
-                margin: 0 5px;
-                padding: 5px;
-                &:hover {
-                    border: 1px solid rgba(255,255,255,0.8);
-                }
-            }
+    }
+    .uk-navbar-toggle {
+        svg {
+            color: white;
+        }
+    }
+    .uk-offcanvas-bar {
+        .uk-nav-header {
+            font-size: 18px;
+        }
+
+        a {
+            padding: 10px 5px;            
+            font-size: 18px;
         }
     }
 }

@@ -37,6 +37,7 @@ export default class Block extends LitBase {
             if (this.block_hash != null && this.block_hash != "") {
                 return html`
                 <div class="content-wrapper uk-container">
+                    ${this._RenderBreadcrumb()}                             
                     <div>
                         <h2>Not Found</h2>
                         <p>                            
@@ -48,6 +49,7 @@ export default class Block extends LitBase {
             } if (this.block_index != null && this.block_index != "") {
                 return html`
                 <div class="content-wrapper uk-container">
+                    ${this._RenderBreadcrumb()}            
                     <div>
                         <h2>Not Found</h2>
                         <p>                            
@@ -59,6 +61,7 @@ export default class Block extends LitBase {
             } else {
                 return html`
                 <div class="content-wrapper uk-container">
+                    ${this._RenderBreadcrumb()}                            
                     <div>
                         <h2>Missing parameter</h2>
                         <p>
@@ -78,6 +81,7 @@ export default class Block extends LitBase {
 
         return html`
         <div class="content-wrapper uk-container">
+            ${this._RenderBreadcrumb()}            
             ${this._RenderSummary(Block)}
             ${this._RenderDetails(Block)}   
             <div class="content-wrapper uk-container">
@@ -117,6 +121,15 @@ export default class Block extends LitBase {
 
     }
 
+    _RenderBreadcrumb() {
+        return html`
+            <ul class="uk-breadcrumb">
+                <li><a href="/index.html">Home</a></li>
+                <li><span>Block</span></li>
+            </ul>
+        `                 
+    }
+
     _RenderSummary(Block) {
         return html`
         <div class="summary">
@@ -153,7 +166,7 @@ export default class Block extends LitBase {
                                     <div>${el.label}</div>
                                     <div id="${el.id}">
                                         ${el.amount!=null?html`${el.amount.toFixed(6)}&nbsp;`:``}
-                                        <a href="${el.url}" target="_blank">${el.value}</a>
+                                        <a href="${el.url}">${el.value}</a>
                                     </div>
                                 </div>`
                         else
@@ -182,7 +195,7 @@ export default class Block extends LitBase {
                 row.innerHTML = `
                     <div>${InsightClient.FormatTransactionType(tr.type)}</div>
                     <div>
-                        <a href="/transaction.html?txid=${tr.txid}" target="_blank">${tr.txid}</a>
+                        <a href="/transaction.html?txid=${tr.txid}">${tr.txid}</a>
                     </div>
                 `
                 txcnt.append(row)

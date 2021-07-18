@@ -32,6 +32,11 @@ export default class BlockList extends LitBase {
     
         return html`
         <div class="content-wrapper uk-container">
+            <ul class="uk-breadcrumb">
+                <li><a href="/index.html">Home</a></li>
+                <li><span>Blocks list</span></li>
+            </ul>  
+
             <h2>Blocks</h2>
             <table class="uk-table uk-table-middle uk-table-divider blocks-container">
                 <thead>
@@ -89,8 +94,8 @@ export default class BlockList extends LitBase {
 
                 let row = document.createElement("tr")                
                 row.innerHTML = `                
-                        <td><a href="/block.html?index=${Height}" target="_blank">${Height}</a></td>
-                        <td class="hide-on-small"><a href="/block.html?hash=${Hash}" target="_blank">${Hash}</a></td>
+                        <td><a href="/block.html?index=${Height}">${Height}</a></td>
+                        <td class="hide-on-small"><a href="/block.html?hash=${Hash}">${Hash}</a></td>
                         <td>${Timestamp}</td>
                         <td>${Transactions}</td>
                         <td class="hide-on-small">${Size}</td>
