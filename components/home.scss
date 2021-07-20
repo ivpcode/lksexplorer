@@ -22,7 +22,7 @@ lit-home {
             align-items: center;
             margin: 0 ;
 
-            @media (max-width: 1024px) {
+            @media (max-width: 960px) {
                 margin: 0 20%;
             }
         
@@ -79,9 +79,38 @@ lit-home {
             background: #f8f8f8;
             border-top: 1px solid #e5e5e5;
             border-bottom: 1px solid #e5e5e5;
+
         }    
     }
 
+    .blocks-container {
+        th:last-child {
+            text-align: center;
+        }
+        td:last-child {
+            text-align: right;
+        }
+    }
+
+    .realtime-transactions-table {
+        th:last-child {
+            width: 20%;
+            text-align: center;
+        }
+        td:last-child {
+            text-align: right;
+        }
+
+        @media (max-width: 960px) {
+            th:last-child {
+                width: 30%;
+            }    
+            small {
+                display:none;
+            }
+        }
+
+    }
     .realtime-transacions-wait {
         display: flex;
         flex-direction: row;

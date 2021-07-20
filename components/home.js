@@ -74,7 +74,7 @@ export default class Home extends LitBase {
                 row.innerHTML = `                
                         <td><a href="/block.html?index=${Height}" target="_blank">${Height}</a></td>
                         <td>${Timestamp}</td>
-                        <td class="hide-on-small">${Transactions}</td>
+                        <td class="hide-on-small" align="center">${Transactions}</td>
                         <td class="hide-on-small">${Size}</td>
                 `
                 blcnt.append(row)
@@ -106,7 +106,7 @@ export default class Home extends LitBase {
         return html`        
         <div class="col-xs-12 col-md-4 col-gray">
             <h2>Welcome</h2>
-            <p><b>lkschain.info</b> is an opensource <a href="https://www.lkschain.io/" target="_blank">LKSCoin</a> blockchain explorer, with the aim of making it easier to consult the LKSCoin blockchain and above all <b>making the notarized information integrated in LKSCoin transacions visually accessible</b>.</p>
+            <p><b>lkschain.info</b> is an opensource blockchain explorer, developed with the aim of making it easier to consult the <a href="https://www.lkschain.io/" target="_blank">LKSCoin blockchain</a> and above all <b>making the notarized information integrated in LKSCoin transactions visually accessible</b>.</p>
             <p><b>lkschain.info</b> is still under development, we will be happy if you report any bugs or malfunctions to out <a href="https://github.com/ivpcode/lksexplorer/issues" target="_blank">github issue tracker</a>.</p>
             <div class="row powered-by">
                 <div class="powered-text">
@@ -155,7 +155,7 @@ export default class Home extends LitBase {
 
         return html`
         <h2 class="">Realtime Network Transactions</h2>
-        <table class="uk-table uk-table-hover uk-table-divider" style="table-layout:fixed">
+        <table class="uk-table uk-table-hover uk-table-divider realtime-transactions-table" style="table-layout:fixed">
             <thead>
                 <tr>
                     <th>Hash</th>
@@ -167,7 +167,7 @@ export default class Home extends LitBase {
                     return html`
                     <tr>
                         <td class="uk-text-truncate"><a href="/transaction.html?txid=${tr.txid}">${tr.txid}</a></td>
-                        <td>${tr.valueOut.toFixed(2)} LKSCOIN</td>
+                        <td>${tr.valueOut.toFixed(2)} <small>LKSC</small></td>
                     </tr>
                     `
                 })}                             
