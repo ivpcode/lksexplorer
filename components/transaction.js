@@ -148,7 +148,10 @@ export default class Transaction extends LitBase {
         txdt.push({ label: "Status", value: Tx.Status })
         txdt.push({ label: "Received Time", value: Tx.Timestamp})
         txdt.push({ label: "Size", value: Tx.Size })
-        txdt.push({ label: "Included in Block", value: Tx.Block, url: `/block.html?index=${Tx.Block}` })
+        let elBlock = { label: "Included in Block", value: Tx.Block,  }
+        if (elBlock.value > 0)
+            elBlock.url = `/block.html?index=${Tx.Block}`
+        txdt.push(elBlock)
         txdt.push({ label: "Confirmations", value: Tx.Confirmations })
         if (parseFloat(Tx.TotalInput) > 0) 
             txdt.push({ label: "Total Input", value: Tx.TotalInput })

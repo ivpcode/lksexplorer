@@ -72,7 +72,7 @@ export default class Home extends LitBase {
 
                 let row = document.createElement("tr")                
                 row.innerHTML = `                
-                        <td><a href="/block.html?index=${Height}" target="_blank">${Height}</a></td>
+                        <td><a href="/block.html?index=${Height}">${Height}</a></td>
                         <td>${Timestamp}</td>
                         <td class="hide-on-small" align="center">${Transactions}</td>
                         <td class="hide-on-small">${Size}</td>
@@ -154,7 +154,8 @@ export default class Home extends LitBase {
     _RenderTransactionsTable() {
 
         return html`
-        <h2 class="">Realtime Network Transactions</h2>
+        <h2 class="">Transaction Radar</h2>
+        <p>Intercepting and displaing in realtime transactions spreaded in LKSCoin blockchain network. </p>
         <table class="uk-table uk-table-hover uk-table-divider realtime-transactions-table" style="table-layout:fixed">
             <thead>
                 <tr>
