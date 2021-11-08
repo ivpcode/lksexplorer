@@ -142,16 +142,16 @@ export default class Transaction extends LitBase {
         else if (Tx.TypeNum == 5) {
             txdt.push({ label: "To SuperBlock", value: Tx.vReceiverAddrs[0], amount: parseFloat(this.tx.vout[0].value), url: `/address.html?addr=${Tx.vReceiverAddrs[0]}` })  
             txdt.push({ label: "To Masternode", value: Tx.vReceiverAddrs[1], amount: parseFloat(this.tx.vout[1].value), url: `/address.html?addr=${Tx.vReceiverAddrs[1]}` })  
-            txdt.push({ label: "To Miner", value: Tx.vReceiverAddrs[2], amount: parseFloat(this.tx.vout[2].value), url: `/address.html?addr=${Tx.vReceiverAddrs[2]}` })  
+			if (this.tx.vout.length > 2)
+            	txdt.push({ label: "To Miner", value: Tx.vReceiverAddrs[2], amount: parseFloat(this.tx.vout[2].value), url: `/address.html?addr=${Tx.vReceiverAddrs[2]}` })  
         }
         
         txdt.push({ label: "Status", value: Tx.Status })
         txdt.push({ label: "Received Time", value: Tx.Timestamp})
         txdt.push({ label: "Size", value: Tx.Size })
-        let elBlock = { label: "Included in Block", value: Tx.Block,  }
-        if (elBlock.value > 0)
-            elBlock.url = `/block.html?index=${Tx.Block}`
-        txdt.push(elBlock)
+        let elBlock = { label: "Included in Block", value: Tx.Block, url: `/block.html?index=${Tx.Block}` }
+        if (elBlock.value > 0) 
+            txdt.push(elBlock)
         txdt.push({ label: "Confirmations", value: Tx.Confirmations })
         if (parseFloat(Tx.TotalInput) > 0) 
             txdt.push({ label: "Total Input", value: Tx.TotalInput })
@@ -180,7 +180,7 @@ export default class Transaction extends LitBase {
 
             },10)
         }
-
+        
         return html`
             <div class="uk-margin-large-top">
                 <h2>Details</h2>

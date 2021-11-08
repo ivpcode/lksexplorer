@@ -4,7 +4,7 @@ import 'regenerator-runtime/runtime'
 import Header from "./components/header"
 import Footer from "./components/footer"
 
-import Broadcast from "./components/broadcast"
+import WalletUtils from "./components/wallet-utils"
 
 // loads the Icon plugin
 UIkit.use(Icons);
@@ -27,6 +27,7 @@ UIkit.use(Icons);
 // address = publicKey.toAddress(Networks.livenet);
 // console.log("Imported PrivKey public addres: "+address.toString())
 
+// Code for wallet 2: "orchard jewel better connect void cabin maple enemy impulse cover general labor"
 // var code = new Mnemonic(
 // 	'remain gospel suspect curious spread until suit found ceiling icon book solution exercise afford yellow'
 //   );

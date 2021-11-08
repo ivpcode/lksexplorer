@@ -17,9 +17,11 @@ export default class Address extends LitBase {
 
     static get properties() {
         return {
+			address: {type: String},
             addr: {type: Object},
             is_error: {type: Number},
-            loading_transactions: {type: Number}
+            loading_transactions: {type: Number},
+			no_breadcrumb: {type: Boolean}
         }
     }
 
@@ -30,7 +32,8 @@ export default class Address extends LitBase {
         this.address = ""
         this.is_error = false
         this.transactions_page = 0
-        this.loading_transactions = false;
+        this.loading_transactions = false
+		this.no_breadcrumb = false
     }
 
     render() {
@@ -98,7 +101,8 @@ export default class Address extends LitBase {
             const urlParams = new URLSearchParams(queryString);
             
             try {
-                this.address = urlParams.get("addr")
+				if (this.address == "")
+                	this.address = urlParams.get("addr")
 
                 this.addr = await InsightClient.GetAddress(this.address)
 
@@ -113,6 +117,9 @@ export default class Address extends LitBase {
     }
 
     _RenderBreadcrumb() {
+		if (this.no_breadcrumb != false)
+			return html``
+			
         return html`
             <ul class="uk-breadcrumb">
                 <li><a href="/index.html">Home</a></li>

@@ -2,6 +2,7 @@ import {html} from 'lit';
 import LitBase from '/lib/lit-base'
 
 import Search from './search'
+import logo from '../img/logo_lks.png'
 
 import "./header.scss"
 
@@ -31,7 +32,7 @@ export default class Header extends LitBase {
                             <svg width="30" height="30" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><rect y="9" width="20" height="2"></rect><rect y="3" width="20" height="2"></rect><rect y="15" width="20" height="2"></rect></svg>
                         </a>
                         <a href="/" class="uk-navbar-item uk-logo">
-                            <img src="https://www.lkschain.io/images/logo.png" style="height:48px">
+                            <img src="${logo}" style="height:48px">
                         </a>                            
                     </div>
                     <div class="uk-navbar-right">
@@ -48,7 +49,8 @@ export default class Header extends LitBase {
                         <li class="uk-nav-header">Menu</li>
                         <li><a href="/index.html">Home</a></li>
                         <li><a href="/blocks.html" class="blocks">Blocks</a></li>
-                        <li><a href="/" class="status">Status</a></li>
+                        <li><a href="/wallet.html" class="wallet">Wallet Utility</a></li>
+						<li><a href="/broadcast.html" class="broadcast">Broadcast transaction</a></li>
                     </ul>
                 </div>
             </div>

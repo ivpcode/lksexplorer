@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Repo of the LKSCOIN chain explorer",
   "main": "index.html",
-  "files_to_build": "index.html broadcast.html transaction.html block.html blocks.html address.html",
+  "files_to_build": "index.html broadcast.html transaction.html block.html blocks.html address.html wallet.html",
   "scripts": {
     "dev": "parcel $npm_package_files_to_build --hmr-port 12345",
     "release": "export DEPLOY_DATE=\"$(date '+%Y.%m.%d-%H.%M')\"; rm -rf ./releases/$DEPLOY_DATE & parcel build $npm_package_files_to_build --out-dir ./releases/$DEPLOY_DATE"

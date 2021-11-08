@@ -61,7 +61,7 @@ export default class Home extends LitBase {
         setTimeout(async ()=>{
             let res = await InsightClient.GetBlockList()
             let blcnt = this.querySelector("table.blocks-container tbody")
-            for(let i=0;i<5;i++) {
+            for(let i=0;i<5 && i<res.blocks.length;i++) {
                 let tr = res.blocks [i];
                 let Height = tr.height                
                 let Timestamp = Utilities.FormatTimestamp(new Date(tr.time*1000))   
@@ -89,7 +89,7 @@ export default class Home extends LitBase {
                 // Join the room.
                 this.socket.emit('subscribe', 'inv');
             })            
-            this.socket.on( 'tx', (data)=> {
+            this.socket.on( 'tx', (data)=> {				
                 if (data.txlock) {
                     console.log("New InstantSend transaction received: " + data.txid)
                 } else {
@@ -155,7 +155,7 @@ export default class Home extends LitBase {
 
         return html`
         <h2 class="">Transaction Radar</h2>
-        <p>Intercepting and displaing in realtime transactions spreaded in LKSCoin blockchain network. </p>
+        <p>Intercepting and displaing in realtime transactions spreaded on the LKSCoin blockchain network. </p>
         <table class="uk-table uk-table-hover uk-table-divider realtime-transactions-table" style="table-layout:fixed">
             <thead>
                 <tr>
