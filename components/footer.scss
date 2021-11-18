@@ -1,5 +1,5 @@
 lit-footer {
-    display: block;
+    display: flex;
     position: sticky;
     bottom: 0;
     width: 100%;
@@ -10,4 +10,28 @@ lit-footer {
     height: 51px;
     overflow: hidden;
     margin-top: auto;
+
+	flex-direction: row;
+	justify-content: space-between;
+	
+    font-size: 10px;
+
+	@media (min-width: 375px) {
+		font-size: 12px;
+	}	
+
+	@media (min-width: 586px) {
+		font-size: inherit;
+	}
+
+	div {
+		height: 100%;
+		display: flex;
+		padding: 0 10px;
+		align-items: center;
+	}
+
+	img {
+		height: 24px;
+	}
 }

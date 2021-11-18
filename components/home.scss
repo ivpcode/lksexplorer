@@ -23,7 +23,7 @@ lit-home {
             margin: 0 ;
 
             @media (max-width: 960px) {
-                margin: 0 20%;
+                margin: 0 5%;
             }
         
             @media (max-width: 512px) {
@@ -32,12 +32,20 @@ lit-home {
 
             a {
                 display:block;
-                width: 25%;
+                width: 20%;
 
                 img {                
-                    width: 100%;
-                    max-height: 80px;
+                    //width: 100%;
+                    max-height: 50px;
                 }
+
+				&.uikit {
+					display: flex;
+					align-items: center;
+					img {
+						max-height: 40px;
+					}
+				}
             }
         }
     }

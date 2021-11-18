@@ -11,6 +11,7 @@ import "./home.scss"
 import BitcoreLogo from "../img/bitcore.logo.svg"
 import LitLogo from "../img/lit.logo.svg"
 import YarnLogo from "../img/yarn.logo.png"
+import UIKitLogo from "../img/uikit.logo.svg"
 
 export default class Home extends LitBase {
 
@@ -107,7 +108,7 @@ export default class Home extends LitBase {
         <div class="col-xs-12 col-md-4 col-gray">
             <h2>Welcome</h2>
             <p><b>lkschain.info</b> is an opensource blockchain explorer, developed with the aim of making it easier to consult the <a href="https://www.lkschain.io/" target="_blank">LKSCoin blockchain</a> and above all <b>making the notarized information integrated in LKSCoin transactions visually accessible</b>.</p>
-            <p><b>lkschain.info</b> is still under development, we will be happy if you report any bugs or malfunctions to out <a href="https://github.com/ivpcode/lksexplorer/issues" target="_blank">github issue tracker</a>.</p>
+            <p><b>lkschain.info</b> is still under development, we will be happy if you report any bugs or malfunctions via <a href="https://github.com/ivpcode/lksexplorer/issues" target="_blank">github issue tracker</a>.</p>
             <div class="row powered-by">
                 <div class="powered-text">
                     <small class="text-muted" translate="">Powered by</small>
@@ -116,6 +117,7 @@ export default class Home extends LitBase {
                     <a href="http://bitcore.io" target="_blank" class="bitcore" title="Bitcore"><img src="${BitcoreLogo}"/></a>
                     <a href="https://lit.dev/" target="_blank" class="angularjs" title="Lit Elements Web Components"><img src="${LitLogo}"/></a>
                     <a href="https://yarnpkg.com/" target="_blank" class="nodejs" title="Yarn Package Manager"><img src="${YarnLogo}"/></a>
+					<a href="https://getuikit.com/" target="_blank" class="uikit" title="UIKit framework"><img src="${UIKitLogo}"/> <span>UIKit</span></a>
                 </div>
             </div>
         </div>
