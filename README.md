@@ -6,6 +6,7 @@ Programmatically the interface with the LKS blockchain is handled via LKSCore ja
 The web-app is developed using Google's [Lit Elements library](https://lit.dev/) and the ui framework [UIKit](https://getuikit.com/). The project is inspired by beautiful projects: https://www.blockchain.com/explorer/ e da https://insight.dash.org/insight/.
 
 At present you can show lks-explorer in action on the domain: https://www.lkschain.info. 
+
 Enjoi 🙂 and feel free to send me comments and bugs signalations.
 
 # To do list
