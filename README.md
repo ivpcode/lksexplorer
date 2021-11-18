@@ -3,7 +3,7 @@ LKS-Explorer is an opensource blockchain explorer, developed with the aim of mak
 
 Programmatically the interface with the LKS blockchain is handled via LKSCore javascript library which I ported from Dashcore-lib that you can find in my other repo [lkscore-lib.min.js](https://github.com/ivpcode/lkscore-lib). The project makes uses also of a porting of Bitpay's [bitcore api](https://github.com/bitpay/bitcore#bitcore).
 
-The web-app is developed using Google's [Lit Elements library](https://lit.dev/) and based on the ui framework [UIKit](https://getuikit.com/). The project is inspired by beautiful projects: https://www.blockchain.com/explorer/ e da https://insight.dash.org/insight/.
+The web-app is developed using Google's [Lit Elements library](https://lit.dev/) and the ui framework [UIKit](https://getuikit.com/). The project is inspired by beautiful projects: https://www.blockchain.com/explorer/ e da https://insight.dash.org/insight/.
 
 At present you can show lks-explorer in action on the domain: https://www.lkschain.info. 
 Enjoi 🙂 and feel free to send me comments and bugs signalations.
