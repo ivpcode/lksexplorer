@@ -7,13 +7,12 @@ At present you can show lks-explorer in action on the domain: https://www.lkscha
 Enjoi 🙂 and feel free to send me comments and bugs signalations.
 
 # To do list
-* [ ] Chain explorer:
-   * [ ] handling naming (via record TXT in DNS??): the holder of the public address and domain does:
-        * [ ] creates a message that contains the domain (complete with subdomain), signs it with his private key so that the signature can be verified. 
-        * [ ] Puts signature hash in a DNS TXT record for his domain. 
-        * [ ] Performs a specific domain-to-address declaration call that allows the server to verify the signature and the TXT record and save the association in the internal database. 
-        * [ ] If the operation is successful, the server stores the pubaddr association with the domain and returns it in the insight queries
-    * [ ] create a logic that captures the subdomain and if it finds a match in the db of the names-addr it shows the transactions
+* [ ] handling naming (via record TXT in DNS??): the holder of the public address and domain does:
+     * [ ] creates a message that contains the domain (complete with subdomain), signs it with his private key so that the signature can be verified. 
+     * [ ] Puts signature hash in a DNS TXT record for his domain. 
+     * [ ] Performs a specific domain-to-address declaration call that allows the server to verify the signature and the TXT record and save the association in the internal database. 
+     * [ ] If the operation is successful, the server stores the pubaddr association with the domain and returns it in the insight queries
+* [ ] create a logic that captures the subdomain and if it finds a match in the db of the names-addr it shows the transactions
 
 
 
