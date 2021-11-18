@@ -1,8 +1,9 @@
 # LKS-Explorer
-Repo of the LKSCOIN chain explorer
+LKS-Explorer is an opensource blockchain explorer, developed with the aim of making it easier to consult the LKSCoin blockchain and above all **making the notarized information integrated in LKSCoin transactions visually accessible**. 
+
+The web-app is developed using Google's library (Lit Elements)[https://lit.dev/], and is inspired by the beautiful projects: https://www.blockchain.com/explorer/ e da https://insight.dash.org/insight/.
 
 # To do list
-
 * Prendere spunto da: https://www.blockchain.com/explorer/ e da https://insight.dash.org/insight/
 * [ ] Chain explorer:
    * [ ] schermata home:
@@ -31,7 +32,8 @@ Repo of the LKSCOIN chain explorer
    * [ ] forkare https://github.com/dashevo/dashcore-lib e trasformarla in lkscore-lib
    * [ ] Fare firma con api del dash o tramite costruzione della transazione ed utilizzare il insight-api per inviarla in rete
 
-# Link utili
+
+# Useful Links
 
 * https://lit.dev/docs/api/LitElement/#LitElement/updates
 * https://gist.github.com/jackzampolin/da3201b89d23dd5fa3becb0185da1fb2
